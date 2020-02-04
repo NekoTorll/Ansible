@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Create group "{{ my_var }}"
+      group:
+        name: "{{ my_var }}"
+        state: present
+    - name: Add user "{{ my_var }}"
+      user:
+        name: "{{ my_var }}"
+        group: "{{ my_var }}"
+        shell: /bin/bash
+    - name: add password
+      shell: 
+        cmd: echo "{{ my_var }}:cangetin" | chpasswd
+      
