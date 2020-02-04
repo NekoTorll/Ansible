@@ -1,0 +1,16 @@
+--- # 
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: Shell version of items
+    shell: 
+      cmd: "{{ item }} --version"
+    with_items:
+      - git
+      - bash
+    register: data
+  - name: Le debug
+    debug:
+      msg: "My result is ({{ item.stdout }}) ok?"
+    when: item.rc == 0
+    with_items: "{{ data.results }}"
