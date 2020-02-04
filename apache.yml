@@ -1,0 +1,20 @@
+--- # Apache change port
+- hosts: localhost
+  become: yes
+  vars:
+    target_test: started
+  tasks:
+  - name: change apache port to 9000
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen '
+      insertafter: '^#Listen '
+      line: Listen 9000
+  - name: stop httpd  
+    service:
+      name: httpd
+      state: stopped
+  - name: start httpd
+    service:
+      name: httpd
+      state: "{{ target_test }}"
