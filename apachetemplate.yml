@@ -1,0 +1,20 @@
+--- # Apache change port
+- hosts: localhost
+  become: yes
+  vars:
+    target_test: started
+    var_port: 9000
+  tasks:
+  - name: change apache port to {{ var_port }}
+    template:
+      src: /root/Ansible/templatehttpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+      backup: yes
+  - name: stop httpd  
+    service:
+      name: httpd
+      state: stopped
+  - name: start httpd
+    service:
+      name: httpd
+      state: "{{ target_test }}"
