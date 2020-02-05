@@ -1,4 +1,0 @@
-all:
-  apache:
-    ansible_port: 9000
-    ansible_host: 192.168.1.110
