@@ -1,5 +1,4 @@
 ---
 # vars file for apache
-vars:
-    target_test: started
-    var_port: 9000
+target_test: started
+var_port: 9000

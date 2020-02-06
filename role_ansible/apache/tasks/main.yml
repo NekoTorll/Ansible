@@ -1,16 +1,15 @@
 ---
 # tasks file for apache
-tasks:
-  - name: change apache port to {{ var_port }}
-    template:
-      src: /root/Ansible/role_ansible/apache/templates/httpd.j2
-      dest: /etc/httpd/conf/httpd.conf
-      backup: yes
-  - name: stop httpd
-    service:
-      name: httpd
-      state: stopped
-  - name: start httpd
-    service:
-      name: httpd
-      state: "{{ target_test }}"
+- name: change apache port to "{{ var_port }}"
+  template:
+    src: /root/Ansible/role_ansible/apache/templates/httpd.j2
+    dest: /etc/httpd/conf/httpd.conf
+    backup: yes
+- name: stop httpd
+  service:
+    name: httpd
+    state: stopped
+- name: start httpd
+  service:
+    name: httpd
+    state: "{{ target_test }}"
