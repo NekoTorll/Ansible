@@ -1,9 +1,9 @@
 ---
-- hosts: vagrant
-  remote_user: vagrant
+- hosts: localhost
   become: yes
   tasks:
   - name: Create random file
     file:
       path: /root/Ansible/random.txt
       state: touch
+

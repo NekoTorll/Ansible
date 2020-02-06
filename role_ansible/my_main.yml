@@ -2,7 +2,7 @@
 - hosts: localhost
   become: yes
   roles:
-    - java
-    - apache
-    - install_jenkins
-    - maven
+#    - java
+#    - apache
+#    - install_jenkins
+#    - maven
